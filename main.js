@@ -1,4 +1,4 @@
-const matrix = [
+const matrix2 = [
     [   'F',   2, 1, 0, 0, 0, 0, 0, 'max' ],
     [ 'базис', 1,  2, 3, 4, 5, 6, 'b', 'q' ],
     [    3,   -4, -6, 1, 0, 0, 0, -20 ],
@@ -8,24 +8,61 @@ const matrix = [
     [   'd',   0,  0, 0, 0, 0, 0,  0 ]
 ]
 
-// const matrix = [
-//     [   'F',   2, 1, 0, 0, 0, 0, 0, 'min' ],
-//     [ 'базис', 1,  2, 3, 4, 5, 6, 'b', 'q' ],
-//     [    3,   -4, -6, 1, 0, 0, 0, -20 ],
-//     [    4,   -2,  5, 0, 1, 0, 0,  27 ],
-//     [    5,    7,  5, 0, 0, 1, 0,  63 ],
-//     [    6,    3, -2, 0, 0, 0, 1,  23 ],
-//     [   'd',   0,  0, 0, 0, 0, 0,  0 ]
-// ]
+const matrix1 = [
+    [   'F',   2, 1, 0, 0, 0, 0, 0, 'min' ],
+    [ 'базис', 1,  2, 3, 4, 5, 6, 'b', 'q' ],
+    [    3,   -4, -6, 1, 0, 0, 0, -20 ],
+    [    4,   -2,  5, 0, 1, 0, 0,  27 ],
+    [    5,    7,  5, 0, 0, 1, 0,  63 ],
+    [    6,    3, -2, 0, 0, 0, 1,  23 ],
+    [   'd',   0,  0, 0, 0, 0, 0,  0 ]
+]
 
-// const matrix = [
-//     [   'F',   7,  8, 6, 5, 0, 0, 0, 0, 'max' ],
-//     [ 'базис', 1,  2, 3, 4, 5, 6, 7, 'b', 'q' ],
-//     [    5,    1,  3, 5, 3, 1, 0, 0,  40 ],
-//     [    6,    2,  6, 1, 0, 0, 1, 0,  50 ],
-//     [    7,    2,  3, 2, 5, 0, 0, 1,  30 ],
-//     [   'd',   0,  0, 0, 0, 0, 0, 0,  0 ]
-// ]
+const matrix3 = [
+    [   'F',   7,  8, 6, 5, 0, 0, 0, 0, 'max' ],
+    [ 'базис', 1,  2, 3, 4, 5, 6, 7, 'b', 'q' ],
+    [    5,    1,  3, 5, 3, 1, 0, 0,  40 ],
+    [    6,    2,  6, 1, 0, 0, 1, 0,  50 ],
+    [    7,    2,  3, 2, 5, 0, 0, 1,  30 ],
+    [   'd',   0,  0, 0, 0, 0, 0, 0,  0 ]
+]
+
+const matrix4 = [
+    [   'F',   2,  3, 0, 0, 0,  0, 'max' ],
+    [ 'базис', 1,  2, 3, 4, 5, 'b', 'q' ],
+    [    3,    1,  2, 1, 0, 0,  8 ],
+    [    4,    1,  1, 0, 1, 0,  6 ],
+    [    5,   -2, -3, 0, 0, 1, -3 ],
+    [   'd',   0,  0, 0, 0, 0,  0 ]
+]
+
+const matrix6 = [
+    [   'F',   2,  4, 0, 0, 0,  0, 'min' ],
+    [ 'базис', 1,  2, 3, 4, 5, 'b', 'q' ],
+    [    3,    1,  2, 1, 0, 0,  8 ],
+    [    4,    1,  3, 0, 1, 0,  6 ],
+    [    5,   -1, -2, 0, 0, 1, -3 ],
+    [   'd',   0,  0, 0, 0, 0,  0 ]
+]
+
+const matrix5 = [
+    [   'F',   2,  1, 0, 0, 0,  0, 'max' ],
+    [ 'базис', 1,  2, 3, 4, 5, 'b', 'q' ],
+    [    3,    -1,  -2, 1, 0, 0,  8 ],
+    [    4,    -1,  -3, 0, 1, 0,  -6 ],
+    [    5,   -2, -3, 0, 0, 1, -3 ],
+    [   'd',   0,  0, 0, 0, 0,  0 ]
+]
+
+const matrix = [
+    [   'F',   2,  1, 0, 0, 0,  0, 'min' ],
+    [ 'базис', 1,  2, 3, 4, 5, 'b', 'q' ],
+    [    3,    1,  2, 1, 0, 0,  4 ],
+    [    4,    2,  1, 0, 1, 0,  6 ],
+    [    5,   -1, -2, 0, 0, 1, -8 ],
+    [   'd',   0,  0, 0, 0, 0,  0 ]
+]
+
 
 const INDEX_COL_B = matrix[1].findIndex((value) => value === 'b');
 const INDEX_COL_Q = matrix[1].findIndex((value) => value === 'q');
@@ -109,7 +146,7 @@ function newMatrix(matrix, indexes) {
 function solveD(matrix) {
     let deltas = new Array(INDEX_COL_B + 1).fill(0);
 
-    for (let di = 1; di < INDEX_COL_B; di++) {
+    for (let di = 1; di < INDEX_COL_B + 1; di++) {
 
         if (di !== INDEX_COL_B) {
             for (let bi = 2; bi < matrix.length; bi++) {
@@ -132,7 +169,7 @@ function solveD(matrix) {
         }
     }
 
-    matrix[matrix.length - 1].splice(1, 7, ...deltas.slice(1));
+    matrix[matrix.length - 1].splice(1, INDEX_COL_B + 1, ...deltas.slice(1));
 }
 
 function checkOptimality(matrix) {
@@ -149,11 +186,19 @@ function getMinDelta(matrix) {
 function calculateQ(matrix) {
     const indexMinDelta = getMinDelta(matrix);
     let Q;
+    let array = [];
 
     for (let row = 2; row < matrix.length - 1; row++) {
         Q = matrix[row][INDEX_COL_B] / matrix[row][indexMinDelta];
         matrix[row][INDEX_COL_Q] = Q < 0 ? Infinity : Q;
+        array.push(matrix[row][INDEX_COL_Q]);
     }
+
+    if (array.every((element) => element === Infinity)) {
+        console.log(array);
+        return false;
+    }
+    return true;
 }
 
 function getMinQ(matrix) {
@@ -177,18 +222,19 @@ function iteration(matrix) {
 
     minYi = getMinDelta(matrix);
 
-    calculateQ(matrix);
+    if (!calculateQ(matrix)) {
+        return false;
+    }
 
     minXi = getMinQ(matrix);
 
-    swapBazis(matrix, [minXi, minYi]);
-
+    swapBazis(matrix, [minXi, minYi]);    
     newMatrix(matrix, [minXi, minYi]);
-
     solveD(matrix);
+    return true;
 }
 
-function calculateFunc() {
+function calculateFunc(matrix) {
     let f = 0;
 
     for (let row = 2; row < matrix.length - 1; row++) {
@@ -199,6 +245,7 @@ function calculateFunc() {
 }
 
 function simplex(matrix) {
+    let isInfinitySolve = false;
 
     if (hasBNegative(matrix)) {
         swapBazis(matrix, getIndexesOfMax(matrix));
@@ -207,12 +254,12 @@ function simplex(matrix) {
 
     solveD(matrix);
 
-
     if (EXTREMUM === "max") {
         while (!checkOptimality(matrix)) {
-            console.log('before iteration', matrix)
-            iteration(matrix);
-            console.log('after iteration', matrix)
+            if (!iteration(matrix)) {
+                isInfinitySolve = true;
+                break;
+            }
         }
     } 
     else {
@@ -223,5 +270,9 @@ function simplex(matrix) {
 
     console.log(matrix);
 
-    calculateFunc();
+    if (isInfinitySolve) {
+        console.log("Функция не ограничена");
+    } else {
+        calculateFunc(matrix);
+    }
 }
